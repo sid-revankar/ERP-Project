@@ -1,0 +1,11 @@
+{% extends 'staff/base.html' %} {% block title %}Upload Sem-1 
+{% endblock %} {% block content %}
+<h2>Upload sem-1 details:</h2>
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" class="form-control mb-3" name="document" accept=".csv" />
+  <input type="submit" class="btn btn-primary rounded-pill" value="Upload" />
+  <input type="reset" class="btn btn-danger rounded-pill" value="Reset" />
+</form>
+
+{% endblock %}

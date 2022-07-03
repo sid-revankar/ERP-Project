@@ -1,0 +1,91 @@
+{% extends 'staff/base.html' %} {% load crispy_forms_tags %} 
+{% block title %}Update timetable {% endblock %} {% block content %}
+<h2 class="fw-bold text-decoration-underline">Updating timetable:</h2>
+<form method="POST">
+  {% csrf_token %}
+  <!-- subject div -->
+  <div class="mb-3">
+    <label for="subject" class="form-label"
+      >Subject<span class="text-danger">*</span></label
+    >
+    <input
+      class="form-control"
+      type="text"
+      id="subject"
+      name="subject"
+      value="{{ sub }}"
+      required
+    />
+  </div>
+  <!-- end -->
+  <!-- semester div -->
+  <div class="mb-3">
+    <label for="semester" class="form-label"
+      >Semester<span class="text-danger">*</span></label
+    >
+    <input
+      class="form-control"
+      type="text"
+      id="semester"
+      name="semester"
+      value="{{ sem }}"
+      required
+    />
+  </div>
+  <!-- end -->
+  <!-- room div -->
+  <div class="mb-3">
+    <label for="room" class="form-label"
+      >Room Number<span class="text-danger">*</span></label
+    >
+    <input
+      class="form-control"
+      type="text"
+      name="room"
+      id="room"
+      value="{{ room }}"
+      required
+    />
+  </div>
+  <!-- end -->
+  <!-- time div -->
+  <div class="mb-3">
+    <label for="time" class="form-label"
+      >Time of the class<span class="text-danger">*</span></label
+    >
+    <input
+      type="text"
+      value="{{ time|truncatechars:8 }}"
+      class="form-control"
+      id="time"
+      name="time"
+      required
+      placeholder="HH:MM"
+      title="HH:MM format"
+    />
+  </div>
+  <!-- end -->
+  <!-- day div -->
+  <div class="mb-3">
+    <label for="day" class="form-label"
+      >Day of the Week<span class="text-danger">*</span></label
+    >
+    <input
+      class="form-control"
+      type="text"
+      name="day"
+      id="day"
+      value="{{ weekday }}"
+      required
+    />
+  </div>
+  <!-- end -->
+  <input class="btn btn-success rounded-pill" type="submit" value="Update" />
+  <a
+    class="btn btn-primary rounded-pill"
+    href="{% url 'time_table' %}"
+    role="button"
+    >Go Back</a
+  >
+</form>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'staff/base.html' %} {% load crispy_forms_tags %}
+{% block title %}Upload Details{% endblock %} {% block content %}
+<h1 class="text-center">Upload student details</h1>
+<hr />
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 1</h5>
+        <p class="card-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'upload1' %}" class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 2</h5>
+        <p class="card-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'upload2' %}" class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 3</h5>
+        <p class="card-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'upload3' %}" class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 4</h5>
+        <p class="card-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'upload4' %}" class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 5</h5>
+        <p class="card-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'upload5' %}" class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 6</h5>
+        <p class="card-text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'upload6' %}" class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

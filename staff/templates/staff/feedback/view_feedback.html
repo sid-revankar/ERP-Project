@@ -1,0 +1,37 @@
+{% extends 'staff/base.html' %} {% block title %}Feedback{% endblock %}
+{% block content %}
+<h1 class="text-decoration-underline">Student Feedback:</h1>
+<table class="table table-bordered table-striped text-center" id="feedback">
+    <caption>Feedback is anonymous if Name/Register Number/Semester is blank.</caption>
+  <thead class="table-dark">
+    <th>Name</th>
+    <th>Register Number</th>
+    <th>Semester</th>
+    <th>Subject</th>
+    <th>Date Created</th>
+    <th>Body</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    {% for f in feed %}
+    <tr>
+      <td>{{ f.name }}</td>
+      <td>{{ f.reg_no }}</td>
+      <td>{{ f.semester }}</td>
+      <td>{{ f.about }}</td>
+      <td>{{ f.created_at }}</td>
+      <td>{{ f.body }}</td>
+      <td>
+        <a
+          href="{% url 'delete-feedback' f.id %}"
+          class="btn btn-outline-danger rounded-pill"
+          title="Delete"
+        >
+          <i class="bi bi-trash-fill"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

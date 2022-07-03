@@ -1,0 +1,49 @@
+{% extends 'staff/base.html' %} {% block title %}Staff Home {% endblock %}
+{% block content %} {% if user.is_authenticated %}
+<h1 class="display-5">Dashboard for {{ user.username }}</h1>
+<hr class="divider">
+<div class="row">
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Timetable</h5>
+        <p class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'time_table' %}" class="btn btn-primary rounded-pill"
+          >View &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Attendance</h5>
+        <p class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'attendance' %}" class="btn btn-primary rounded-pill"
+          >Manage &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Feedback</h5>
+        <p class="card-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <a href="{% url 'view-feedback' %}" class="btn btn-primary rounded-pill"
+          >View &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<a href="{% url 'login' %}">Login</a> to view dashboard
+{% endif %}
+{% endblock %}

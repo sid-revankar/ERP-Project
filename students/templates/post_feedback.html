@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Post Feedback{% endblock %}
+{% block content %}
+<h1 class="text-decoration-underline"> Post a feedback: </h1>
+
+<form method="POST">
+	{% csrf_token %}
+	<label for="name"> Name</label>
+	<input type="text" class="form-control" id="name" name="name" placeholder="Leave blank for anonymous feedback"/>
+
+	<label for="reg" class="mt-2"> Register number </label>
+	<input type="text" class="form-control" id="reg" name="reg_no" minlength="10" maxlength="10" placeholder="Leave blank for anonymous feedback"/>
+
+	<label for="sem" class="mt-2"> Semester </label>
+	<input type="text" class="form-control" id="sem" name="sem" min="1" max="6" placeholder="Leave blank for anonymous feedback"/>
+
+	<label for="about" class="mt-2"> Subject </label>
+	<input type="text" class="form-control" id="about" name="about" placeholder="What is the feedback about?" required/>
+
+	<label for="date" class="mt-2"> Date Created</label>
+	<input type="date" class="form-control" id="date" name="date" required/>
+
+	<label for="feedback" class="mt-2">Feedback body </label>
+	<textarea required rows=3 maxlength=250 type="text" class="form-control mb-3" id="feedback" name = "body"></textarea>
+
+	<button type="submit" class="btn btn-primary rounded-pill">Send</button>
+</form>
+{% endblock %}

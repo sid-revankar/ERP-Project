@@ -1,0 +1,13 @@
+{% extends 'staff/base.html' %} {% block title %}Result Upload{% endblock %} 
+{% block content %}
+
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  <h1>Upload CSV Here</h1>
+
+  <input class="form-control mb-3" name="upload" type="file" accept=".csv" />
+  <input type="submit" class="btn btn-primary rounded-pill" value="Upload" />
+  <input type="reset" class="btn btn-danger rounded-pill" value="Reset" />
+</form>
+
+{% endblock %}

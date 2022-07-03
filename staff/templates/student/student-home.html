@@ -1,0 +1,86 @@
+{% extends 'staff/base.html' %} {% load crispy_forms_tags %}
+{% block title %}Student Details{% endblock %} {% block content %}
+<h1 class="text-center">Student Details</h1>
+<hr>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 1</h5>
+        <p class="card-text">List of semester 1 students.</p>
+        <a
+          href="{% url 'students1' %}"
+          class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 2</h5>
+        <p class="card-text">List of semester 2 students.</p>
+        <a
+          href="{% url 'students2' %}"
+          class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 3</h5>
+        <p class="card-text">List of semester 3 students.</p>
+        <a
+          href="{% url 'students3' %}"
+          class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 4</h5>
+        <p class="card-text">List of semester 4 students.</p>
+        <a
+          href="{% url 'students4' %}"
+          class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 5</h5>
+        <p class="card-text">List of semester 5 students.</p>
+        <a
+          href="{% url 'students5' %}"
+          class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4 mb-3">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Semester - 6</h5>
+        <p class="card-text">List of semester 6 students.</p>
+        <a
+          href="{% url 'students6' %}"
+          class="btn btn-primary rounded-pill"
+          >Here &raquo;</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

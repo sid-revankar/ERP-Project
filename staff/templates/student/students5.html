@@ -1,0 +1,47 @@
+{% extends 'staff/base.html' %} {% block title %}Student Details {% endblock %}
+{% block content %}
+<h1>Sem-5 Students Details:</h1>
+<table class="table table-bordered table-striped text-center" id="students">
+  <thead class="table-dark">
+    <tr>
+      <th>Roll Number</th>
+      <th>Register Number</th>
+      <th>Name</th>
+      <th>Contact No</th>
+      <th>Email</th>
+      <th>Class Details</th>
+      <th>Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for x in stds %}
+    <tr>
+      <td>{{x.roll_no }}</td>
+      <td>{{x.ern }}</td>
+      <td>{{x.name }}</td>
+      <td>{{x.contact_no }}</td>
+      <td>{{x.email }}</td>
+      <td>{{x.class_details }}</td>
+      <td>
+
+        <a
+          href="{% url 'update5' x.id %}"
+          class="btn btn-outline-primary rounded-pill"
+          title="Update"
+        >
+          <i class="bi bi-pencil-fill"></i>
+        </a>
+
+        <a
+          href="{% url 'del5' x.id %}"
+          class="btn btn-outline-danger rounded-pill"
+          title="Delete"
+        >
+          <i class="bi bi-trash-fill"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

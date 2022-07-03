@@ -1,0 +1,129 @@
+{% extends 'staff/base.html' %} {% block title %}Staff Timetable {% endblock %}
+{% block content %}
+
+<!-- main -->
+<h1 class="text-decoration-underline">{{ user.username }}'s Timetable:</h1>
+<!-- Timetable display -->
+<table class="table table-bordered table-striped text-center" id="tt">
+  <thead class="table-dark">
+    <th>Subject</th>
+    <th>Sem</th>
+    <th>Room</th>
+    <th>Time</th>
+    <th>Day</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+    {% for i in tt %}
+    <tr>
+      <td>{{ i.subject }}</td>
+      <td>{{ i.semester }}</td>
+      <td>{{ i.room_no }}</td>
+      <td>{{ i.time }}</td>
+      <td>{{ i.day }}</td>
+      <td>
+        <a
+          href="{% url 'update_tt' i.id %}"
+          class="btn btn-outline-primary rounded-pill"
+          title="Update"
+        >
+          <i class="bi bi-pencil-fill"></i>
+        </a>
+        <a
+          href="{% url 'delete_tt' i.id %}"
+          class="btn btn-outline-danger rounded-pill"
+          title="Delete"
+        >
+          <i class="bi bi-trash-fill"></i>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<!-- end display -->
+<!-- Add records accordion -->
+<div class="accordion pb-2 mt-3" id="tt_accordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading">
+      <button
+        class="accordion-button collapsed"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapse"
+      >
+        Add record to the timetable
+      </button>
+    </h2>
+    <div
+      id="collapse"
+      class="accordion-collapse collapse"
+      data-bs-parent="#tt_accordion"
+    >
+      <div class="accordion-body">
+        <form method="post">
+          {% csrf_token %}
+          <label for="semester" class="form-label">Semester:</label>
+          <input
+            type="number"
+            class="form-control mb-2"
+            placeholder="1/2/3/4/5/6"
+            name="semester"
+            id="semester"
+            max="6"
+            min="1"
+            required
+          />
+          <label for="subject" class="form-label">Subject:</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            placeholder="Subject Name"
+            name="subject"
+            id="subject"
+            required
+          />
+          <label for="room" class="form-label">Room:</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            placeholder="Room Number"
+            name="room"
+            id="room"
+            required
+          />
+          <label for="time" class="form-label">Time:</label>
+          <input
+            type="time"
+            class="form-control mb-2"
+            name="time"
+            id="time"
+            required
+          />
+          <label for="day" class="form-label">Day:</label>
+          <input
+            type="text"
+            class="form-control mb-2"
+            name="day"
+            placeholder="Day of the Week"
+            size="72"
+            id="day"
+            required
+          />
+          <input
+            class="btn btn-primary rounded-pill"
+            type="submit"
+            value="Save"
+          />
+          <input
+            class="btn btn-danger rounded-pill"
+            type="reset"
+            value="Reset"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end add records-->
+{% endblock %}

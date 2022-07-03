@@ -1,0 +1,9 @@
+{% extends 'staff/base.html' %} {% load crispy_forms_tags %} 
+{% block title %}Sem-1 Attendance{% endblock %} {% block content %}
+<h1>Semester 1 Attendance:</h1>
+<hr />
+<form method="POST">
+  {% csrf_token %} {{form|crispy}}
+  <input class="btn btn-primary" type="submit" value="Save" />
+</form>
+{% endblock %}

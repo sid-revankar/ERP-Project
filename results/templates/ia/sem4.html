@@ -1,0 +1,11 @@
+{% extends 'staff/base.html'%} {% block title %} Sem - 4 IA {% endblock %}
+{% load crispy_forms_tags %} {% block content %}
+<h1>Semester 4 IA Marks</h1>
+<hr />
+<form method="POST">
+  {% csrf_token %} {{form4|crispy}}
+  <input class="btn btn-primary btn-lg" type="submit" value="Save" />
+  <input class="btn btn-danger btn-lg" type="reset" value="Reset" />
+</form>
+
+{% endblock %}
