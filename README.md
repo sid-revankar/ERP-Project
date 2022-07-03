@@ -29,9 +29,9 @@ The main objective of this project is to provide an ERP software for managing an
 - Django v4.0+
 
 ### Creating an environment
-- Create a Folder where you want to save the project
+1. Create a Folder where you want to save the project
 
-- Create a Virtual Environment and Activate
+2. Create a Virtual Environment and Activate
 
 Install Virtual Environment First
 ```
@@ -70,29 +70,29 @@ $  pip install -r requirements.txt
 
 ### Running the Application
 
-- Clone this project
+1. Clone this project
 ```
 $  git clone https://github.com/sid-revankar/ERP-Project.git
 ```
 
-- cd into the project directory
+2. cd into the project directory
 ```
 $  cd ERP-Project
 ```
 
-- Now make migrations
+3. Now make migrations
 ```
 $  python manage.py makemigrations
 $  python manage.py migrate
 ```
 
-- Create superuser to login
+4. Create superuser to login
 ```
 $  python manage.py createsuperuser
 ```
 Then add your desired email, username and password.
 
-- Then run the server
+5. Then run the server
 ```
 $  python manage.py runserver
 ```
