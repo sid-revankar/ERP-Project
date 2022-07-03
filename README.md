@@ -29,16 +29,16 @@ The main objective of this project is to provide an ERP software for managing an
 - Django v4.0+
 
 ### Creating an environment
-1. Create a Folder where you want to save the project
+- Create a Folder where you want to save the project
 
-2. Create a Virtual Environment and Activate
+- Create a Virtual Environment and Activate
 
-Install Virtual Environment First
+1. Install Virtual Environment First
 ```
 $  pip install virtualenv
 ```
 
-Create Virtual Environment
+2. Create Virtual Environment
 
 For Windows
 ```
@@ -49,7 +49,7 @@ For Mac
 $  python3 -m venv venv
 ```
 
-Activate Virtual Environment
+3. Activate Virtual Environment
 
 For Windows
 ```
