@@ -53,7 +53,7 @@ $  virtualenv venv
 
 For Windows
 ```
-$  myenv\Scripts\activate
+$  venv\Scripts\activate
 ```
 
 For Mac/Linux
