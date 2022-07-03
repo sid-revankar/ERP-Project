@@ -21,8 +21,6 @@ The main objective of this project is to provide an ERP software for managing an
 
 ## Installation
 
-~ To run this project locally
-
 ### Pre-requisites
 
 - Python v3.8+
