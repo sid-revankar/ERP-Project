@@ -42,21 +42,21 @@ $  pip install virtualenv
 
 For Windows
 ```
-$  python -m venv venv
+$  virtualenv venv
 ```
-For Mac
+For Mac/Linux
 ```
-$  python3 -m venv venv
+$  virtualenv venv
 ```
 
 3. Activate Virtual Environment
 
 For Windows
 ```
-$  source venv/scripts/activate
+$  myenv\Scripts\activate
 ```
 
-For Mac
+For Mac/Linux
 ```
 $  source venv/bin/activate
 ```
