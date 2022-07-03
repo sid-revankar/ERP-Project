@@ -62,7 +62,7 @@ $  source venv/bin/activate
 ```
 
 
-Install remaining dependencies by downloading the requirements.txt file and running the following command
+Install remaining dependencies by downloading the [requirements.txt](https://raw.githubusercontent.com/sid-revankar/ERP-Project/master/requirements.txt) file and running the following command
 
 ```
 $  pip install -r requirements.txt
