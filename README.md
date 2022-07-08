@@ -14,6 +14,7 @@ The main objective of this project is to provide an ERP software for managing an
 #### Staff Portal
 - Student Details
 - Attendance Management
+- Timetable Management
 - Feedback Management
 - Result Management
 
