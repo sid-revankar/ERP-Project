@@ -1,4 +1,5 @@
-{% load static %}
+ {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,7 +10,6 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
-<<<<<<< HEAD
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} ">
     <title>Erp Tool</title>
 
@@ -47,43 +47,10 @@
             background: blueviolet;
         }
         
-=======
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} " />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <title>Erp Tool</title>
-
-    <style>
-      #dash {
-        background-image: url("/static/home_imgs/6gif.gif");
-      }
-
-      #nav2 {
-        background-image: url("/static/home_imgs/3gif.gif");
-        background-size: cover;
-      }
-
-      #card_bg {
-        background-image: url("/static/home_imgs/p_book.gif");
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      #card_bg2 {
-        background-image: url("static/home_imgs/7SIm.gif");
-      }
-
-      #sec1 {
-        background: blueviolet;
-      }
->>>>>>> 104e3c5218c3b33c19bcf7b3b7f72d2117d76a52
     </style>
   </head>
   <body>
-    <nav
-      class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top"
-      id="nav1"
-    >
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top" id="nav1">
       <div class="container" id="dash">
         <a href="/" class="navbar-brand">Home</a>
 
@@ -102,11 +69,7 @@
               <a href="#clg_website" class="nav-link">Official Website</a>
             </li>
             <li class="nav-item">
-              <a
-                href="https://k2.karnataka.gov.in/wps/portal/Khajane-II/Scope/Remittance/ChallanGeneration/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTSycnQ39nQ38LVx8LA0C_f3DQn28PAwNQkz1w8EKDHAARwP9KGL041EQhd_4cP0ovFa4GBJQYGFEQIGBAVQBHlcU5IZGGGR6pgMA7DD6nQ!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/"
-                class="nav-link"
-                >K2 Challan</a
-              >
+              <a href="https://k2.karnataka.gov.in/wps/portal/Khajane-II/Scope/Remittance/ChallanGeneration/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTSycnQ39nQ38LVx8LA0C_f3DQn28PAwNQkz1w8EKDHAARwP9KGL041EQhd_4cP0ovFa4GBJQYGFEQIGBAVQBHlcU5IZGGGR6pgMA7DD6nQ!!/dz/d5/L2dBISEvZ0FBIS9nQSEh/" class="nav-link">K2 Challan</a>
             </li>
           </ul>
         </div>
@@ -114,17 +77,21 @@
     </nav>
 
     <section
-      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start"
-      id="nav2"
-    >
+      class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start" id="nav2">
       <div class="container" id="nav02">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
-            <h1>
-              KLS Shri <span class="text-warning"> Vasantrao Potdar </span>
-            </h1>
-            <p class="lead my-4">Student management tool</p>
+            <h1>KLS Shri <span class="text-warning"> Vasantrao Potdar </span></h1>
+            <p class="lead my-4">
+              Student management tool 
+            </p>
+
           </div>
+          <img
+            class="img-fluid w-50 d-none d-sm-block"
+            src="img/showcase.svg"
+            alt=""
+          />
         </div>
       </div>
     </section>
@@ -140,15 +107,13 @@
                 </div>
                 <h3 class="card-title mb-3">Staff</h3>
                 <p class="text-dark" id="staff_p">
-                  Teachers can login to their portal using login details.
+                    Teachers can login to their portal using login details.
                 </p>
-                <a href="{% url 'staff-home' %}" class="btn btn-primary"
-                  >Login</a
-                >
+                <a href="{% url 'staff-home' %}" class="btn btn-primary">Login</a>
               </div>
             </div>
           </div>
-
+          
           <div class="col-md">
             <div class="card bg-dark text-light" id="card_bg2">
               <div class="card-body text-center">
@@ -156,10 +121,10 @@
                   <i class="bi bi-people"></i>
                 </div>
                 <h3 class="card-title mb-3">Student</h3>
-                <p class="card-text">Students can visit their portal.</p>
-                <a href="{% url 'student-home' %}" class="btn btn-primary"
-                  >Visit</a
-                >
+                <p class="card-text">
+                    Students can visit their portal.
+                </p>
+                <a href="{% url 'student-home' %}" class="btn btn-primary">Visit</a>
               </div>
             </div>
           </div>
@@ -173,13 +138,14 @@
           <div class="col-md p-5">
             <h2>Institute Website</h2>
             <p class="lead">
-              “Education is a once in a lifetime opportunity to open children’s
-              hearts and minds to the unbelievable wonder of the universe.”
-              <br />– Sir Anthony Seldon
+              “Education is a once in a lifetime opportunity to open children’s hearts and minds to the unbelievable wonder of the universe.” <br>– Sir Anthony Seldon
             </p>
             <a href="https://vpp.klsbelagavi.org/" class="btn btn-light mt-3">
               <i class="bi bi-chevron-right"></i> KLS VPP
             </a>
+          </div>
+          <div class="col-md">
+            <img src="img/react.svg" class="img-fluid" alt="" />
           </div>
         </div>
       </div>
