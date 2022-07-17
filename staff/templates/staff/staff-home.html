@@ -44,6 +44,11 @@
   </div>
 </div>
 {% else %}
-<a href="{% url 'login' %}">Login</a> to view dashboard
+<script>
+  window.onload = function() {
+    // similar behavior as clicking on a link
+    window.location.href = "http://localhost:8000/login/";
+}
+</script>
 {% endif %}
 {% endblock %}

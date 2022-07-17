@@ -126,17 +126,13 @@
                 </li>
               </ul>
             </li>
-            <!-- <li class="nav-item form-switch mt-2">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="lightSwitch"
-              />
-            </li> -->
           </ul>
           {% endif %}
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link">{{ user.username }}</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>

@@ -27,9 +27,8 @@ def staff_home(request):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(
+            request, username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             login(request, user)
             return redirect('/staff')
@@ -59,21 +58,16 @@ def display_tt(request):
     Returns a success message to the template upon record creation.
     '''
     if request.method == 'POST':  # check post
-        # get field values from html form
-        sem = request.POST.get("semester")
-        sub = request.POST.get("subject")
-        room_no = request.POST.get("room")
-        time = request.POST.get("time")
-        day = request.POST.get("day")
 
-        # assigns variable values to model fields and creates a new record
+        # get field values from html form and creates a new record
+
         Timetable.objects.create(
             user=request.user,
-            semester=sem,
-            subject=sub,
-            room_no=room_no,
-            time=time,
-            day=day
+            semester=request.POST.get("semester"),
+            subject=request.POST.get("subject"),
+            room_no=request.POST.get("room"),
+            time=request.POST.get("time"),
+            day=request.POST.get("day"),
         )
 
         messages.success(
@@ -103,18 +97,12 @@ def update_record(request, tt_id):
 
     if request.method == 'POST':  # check post request
         # get field values from html form
-        sub = request.POST.get("subject")
-        sem = request.POST.get("semester")
-        room_no = request.POST.get("room")
-        time = request.POST.get("time")
-        day = request.POST.get("day")
-
-        # assign variable values to object fields
-        tt.subject = sub
-        tt.semester = sem
-        tt.room_no = room_no
-        tt.time = time
-        tt.day = day
+        # assign values to object fields
+        tt.subject = request.POST.get("subject")
+        tt.semester = request.POST.get("semester")
+        tt.room_no = request.POST.get("room")
+        tt.time = request.POST.get("time")
+        tt.day = request.POST.get("day")
 
         # saves the records (overrides)
         tt.save()
@@ -135,8 +123,7 @@ The passed timetable id (tt_id) is used as primary key to delete the particular 
 
 @login_required
 def delete_record(request, tt_id):
-    record = Timetable.objects.get(pk=tt_id)
-    record.delete()
+    record = Timetable.objects.get(pk=tt_id).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/staff/time-table')
 
@@ -156,8 +143,7 @@ def view_feedback(request):
 
 @login_required
 def delete_feedback(request, f_id):
-    record = feedback.objects.get(pk=f_id)
-    record.delete()
+    record = feedback.objects.get(pk=f_id).delete()
     messages.success(request, 'Feedback deleted successfully!')
     return redirect('/staff/feedback')
 
@@ -478,8 +464,7 @@ def students1(request):
 
 @login_required
 def delete_student1(request, st_id1):
-    record = Sem1Students.objects.get(pk=st_id1)
-    record.delete()
+    record = Sem1Students.objects.get(pk=st_id1).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/students/details/1')
 
@@ -494,8 +479,7 @@ def students2(request):
 
 @login_required
 def delete_student2(request, st_id2):
-    record = Sem2Students.objects.get(pk=st_id2)
-    record.delete()
+    record = Sem2Students.objects.get(pk=st_id2).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/students/details/2')
 
@@ -511,8 +495,7 @@ def students3(request):
 
 @login_required
 def delete_student3(request, st_id3):
-    record = Sem3Students.objects.get(pk=st_id3)
-    record.delete()
+    record = Sem3Students.objects.get(pk=st_id3).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/students/details/3')
 
@@ -528,8 +511,7 @@ def students4(request):
 
 @login_required
 def delete_student4(request, st_id4):
-    record = Sem4Students.objects.get(pk=st_id4)
-    record.delete()
+    record = Sem4Students.objects.get(pk=st_id4).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/students/details/4')
 
@@ -545,8 +527,7 @@ def students5(request):
 
 @login_required
 def delete_student5(request, st_id5):
-    record = Sem5Students.objects.get(pk=st_id5)
-    record.delete()
+    record = Sem5Students.objects.get(pk=st_id5).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/students/details/5')
 
@@ -562,149 +543,160 @@ def students6(request):
 
 @login_required
 def delete_student6(request, st_id6):
-    record = Sem6Students.objects.get(pk=st_id6)
-    record.delete()
+    record = Sem6Students.objects.get(pk=st_id6).delete()
     messages.success(request, 'Record deleted successfully!')
     return redirect('/students/details/6')
 
 # -----------------------------------------------------------
 
-# Student details update 
+# Student details update
+
 
 @login_required
 def update_view1(request, st_id1):
     # dictionary for initial data with
     # field names as keys
-    context ={}
- 
+    context = {}
+
     # fetch the object related to passed id
-    obj = Sem1Students.objects.get(pk = st_id1)
- 
+    obj = Sem1Students.objects.get(pk=st_id1)
+
     # pass the object as instance in form
-    form = Sem1StdUpdateForm(request.POST or None, instance = obj)
- 
+    form = Sem1StdUpdateForm(request.POST or None, instance=obj)
+
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Student updated successfully!')
         return redirect('/students/details/1')
- 
+
     # add form dictionary to context
     context["form"] = form
- 
+
     return render(request, "student/update/update.html", context)
+
 
 @login_required
 def update_view2(request, st_id2):
     # dictionary for initial data with
     # field names as keys
-    context ={}
- 
+    context = {}
+
     # fetch the object related to passed id
-    obj = Sem2Students.objects.get(pk = st_id2)
- 
+    obj = Sem2Students.objects.get(pk=st_id2)
+
     # pass the object as instance in form
-    form = Sem2StdUpdateForm(request.POST or None, instance = obj)
- 
+    form = Sem2StdUpdateForm(request.POST or None, instance=obj)
+
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Student updated successfully!')
         return redirect('/students/details/2')
- 
+
     # add form dictionary to context
     context["form"] = form
- 
+
     return render(request, "student/update/update.html", context)
+
 
 @login_required
 def update_view3(request, st_id3):
     # dictionary for initial data with
     # field names as keys
-    context ={}
- 
+    context = {}
+
     # fetch the object related to passed id
-    obj = Sem3Students.objects.get(pk = st_id3)
- 
+    obj = Sem3Students.objects.get(pk=st_id3)
+
     # pass the object as instance in form
-    form = Sem3StdUpdateForm(request.POST or None, instance = obj)
- 
+    form = Sem3StdUpdateForm(request.POST or None, instance=obj)
+
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Student updated successfully!')
         return redirect('/students/details/3')
- 
+
     # add form dictionary to context
     context["form"] = form
- 
+
     return render(request, "student/update/update.html", context)
+
 
 @login_required
 def update_view4(request, st_id4):
     # dictionary for initial data with
     # field names as keys
-    context ={}
- 
+    context = {}
+
     # fetch the object related to passed id
-    obj = Sem4Students.objects.get(pk = st_id4)
- 
+    obj = Sem4Students.objects.get(pk=st_id4)
+
     # pass the object as instance in form
-    form = Sem4StdUpdateForm(request.POST or None, instance = obj)
- 
+    form = Sem4StdUpdateForm(request.POST or None, instance=obj)
+
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Student updated successfully!')
         return redirect('/students/details/4')
- 
+
     # add form dictionary to context
     context["form"] = form
- 
+
     return render(request, "student/update/update.html", context)
+
 
 @login_required
 def update_view5(request, st_id5):
     # dictionary for initial data with
     # field names as keys
-    context ={}
- 
+    context = {}
+
     # fetch the object related to passed id
-    obj = Sem5Students.objects.get(pk = st_id5)
- 
+    obj = Sem5Students.objects.get(pk=st_id5)
+
     # pass the object as instance in form
-    form = Sem5StdUpdateForm(request.POST or None, instance = obj)
- 
+    form = Sem5StdUpdateForm(request.POST or None, instance=obj)
+
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Student updated successfully!')
         return redirect('/students/details/5')
- 
+
     # add form dictionary to context
     context["form"] = form
- 
+
     return render(request, "student/update/update.html", context)
+
 
 @login_required
 def update_view6(request, st_id6):
     # dictionary for initial data with
     # field names as keys
-    context ={}
- 
+    context = {}
+
     # fetch the object related to passed id
-    obj = Sem6Students.objects.get(pk = st_id6)
- 
+    obj = Sem6Students.objects.get(pk=st_id6)
+
     # pass the object as instance in form
-    form = Sem6StdUpdateForm(request.POST or None, instance = obj)
- 
+    form = Sem6StdUpdateForm(request.POST or None, instance=obj)
+
     # save the data from the form and
     # redirect to detail_view
     if form.is_valid():
         form.save()
+        messages.success(request, 'Student updated successfully!')
         return redirect('/students/details/6')
- 
+
     # add form dictionary to context
     context["form"] = form
- 
+
     return render(request, "student/update/update.html", context)
