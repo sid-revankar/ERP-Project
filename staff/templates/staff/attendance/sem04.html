@@ -1,13 +1,57 @@
-{% extends 'staff/base.html' %}
-{% load crispy_forms_tags %}
-{% block title %}Attendance{% endblock %}
-{% block content %}
-<h1>Semester 4 Attendance</h1>
-<hr>
+{% extends 'staff/base.html' %} {% load crispy_forms_tags %} 
+{% block title %}Attendance{% endblock %} {% block content %}
+<h1>Semester 4 Attendance:</h1>
 <form method="POST">
-	{% csrf_token %}
-	{{form|crispy}}
-<input class="btn btn-primary" type="submit" value="Save">
+  {% csrf_token %}
+  <div class="input-group mb-3">
+    <label class="input-group-text" for="date">Attendance date</label>
+    <input type="date" required class="form-control" name="date" id="date" />
+
+    <select name="subject" class="form-select">
+      <option selected>Choose subject...</option>
+
+      <option value="DATA STRUCTURES WITH PYTHON">
+        DATA STRUCTURES WITH PYTHON
+      </option>
+      <option value="OPERATING SYSTEM & ADMINISTRATION">
+        OPERATING SYSTEM & ADMINISTRATION
+      </option>
+      <option value="OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA">
+        OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA
+      </option>
+      <option value="Software Engineering principles and practices">
+        Software Engineering principles and practices
+      </option>
+      <option value="Indian Constitution">Indian Constitution</option>
+    </select>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <th>Status</th>
+      <th>Roll Number</th>
+      <th>Name</th>
+    </thead>
+    <tbody>
+      {% for i in s %}
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            name="roll"
+            id="roll"
+            class="form-check-input"
+            value="{{ i.roll_no }}"
+          />
+          <label for="roll" class="form-check-label">Absent</label>
+        </td>
+        <td>{{ i.roll_no }}</td>
+        <td>{{ i.name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <input class="btn btn-primary rounded-pill" type="submit" value="Save" />
 </form>
 
 {% endblock %}
