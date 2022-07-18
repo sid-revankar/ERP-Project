@@ -3,7 +3,50 @@
 <h1>Semester 1 Attendance:</h1>
 <hr />
 <form method="POST">
-  {% csrf_token %} {{form|crispy}}
-  <input class="btn btn-primary" type="submit" value="Save" />
+  {% csrf_token %}
+  <label class="form-label" for="id_subject">Subject:</label>
+  <select name="subject" class="select form-select mb-3" id="id_subject">
+    <option value="ENGINEERING MATHEMATICS">ENGINEERING MATHEMATICS</option>
+    <option value="FUNDAMENTALS OF COMPUTER">FUNDAMENTALS OF COMPUTER</option>
+    <option value="FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB">
+      FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB
+    </option>
+    <option value="IT SKILLS LAB">IT SKILLS LAB</option>
+    <option value="ENVIRONMENT SUSTAINABILITY">
+      ENVIRONMENT SUSTAINABILITY
+    </option>
+  </select>
+
+  <label for="date" class="form-label"
+    >Attendance Date:
+    <input type="date" required class="form-control" name="date" id="date" />
+  </label>
+
+  <table class="table table-bordered">
+    <thead>
+      <th>Status</th>
+      <th>Roll Number</th>
+      <th>Name</th>
+    </thead>
+    <tbody>
+      {% for i in s %}
+      <tr>
+        <td>
+          <input
+            type="checkbox"
+            name="roll"
+            id="roll"
+            class="form-check-input"
+            value="{{ i.roll_no }}"
+          />
+          <label for="roll" class="form-check-label">Absent</label>
+        </td>
+        <td>{{ i.roll_no }}</td>
+        <td>{{ i.name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <input type="submit" value="Save Attendance" class="btn btn-primary rounded-pill">
 </form>
 {% endblock %}

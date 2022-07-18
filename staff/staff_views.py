@@ -161,15 +161,21 @@ def attendance(request):
 
 @login_required
 def sem1Attendance(request):
-    if request.method == 'POST':
-        form = Sem1AttendanceForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Attendance added successfully!")
-            return redirect('/staff/attendance/sem1')
-    else:
-        form = Sem1AttendanceForm()
-    return render(request, 'staff/attendance/sem01.html', {'form': form})
+    s = Sem1Students.objects.all()
+    if request.method == "POST":
+        subject = request.POST.get("subject")
+        date = request.POST.get("date")
+        for r in request.POST.getlist("roll"):
+            Sem1Attendance.objects.create(
+                roll=r,
+                semester=1,
+                subject=subject,
+                status="Absent",
+                date=date,
+            )
+        messages.success(request, "Attendance saved successfully!")
+        return redirect('/staff/attendance/sem1')
+    return render(request, 'staff/attendance/sem01.html', {'s': s})
 
 
 # semester 2 attendance view

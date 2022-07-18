@@ -20,7 +20,7 @@ SEM1_SUBS = (
     ("FUNDAMENTALS OF COMPUTER", "FUNDAMENTALS OF COMPUTER"),
 
     ("FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB",
-    "FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB"),
+     "FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB"),
 
     ("IT SKILLS LAB", "IT SKILLS LAB"),
 
@@ -32,10 +32,10 @@ SEM2_SUBS = (
 
     ("STATISTICS AND ANALYSIS", "STATISTICS AND ANALYSIS"),
 
-    ("COMMUNICATION SKILLS","COMMUNICATION SKILLS"),
+    ("COMMUNICATION SKILLS", "COMMUNICATION SKILLS"),
 
     ("CAEG (COMPUTER AIDED ENGINEERING GRAPHICS)",
-    "CAEG (COMPUTER AIDED ENGINEERING GRAPHICS)"),
+     "CAEG (COMPUTER AIDED ENGINEERING GRAPHICS)"),
 
     ("MULTIMEDIA & ANIMATION", "MULTIMEDIA & ANIMATION"),
 
@@ -46,9 +46,9 @@ SEM3_SUBS = (
     ("PYTHON PROGRAMMING", "PYTHON PROGRAMMING"),
 
     ("COMPUTER HARDWARE, MAINTENANCE AND ADMINISTRATION",
-    "COMPUTER HARDWARE, MAINTENANCE AND ADMINISTRATION"),
+     "COMPUTER HARDWARE, MAINTENANCE AND ADMINISTRATION"),
 
-    ("COMPUTER NETWORKS","COMPUTER NETWORKS"),
+    ("COMPUTER NETWORKS", "COMPUTER NETWORKS"),
 
     ("DATABASE SYSTEM CCONCEPTS & PL/SQL", "DATABASE SYSTEM CCONCEPTS & PL/SQL"),
 
@@ -61,10 +61,10 @@ SEM4_SUBS = (
     ("OPERATING SYSTEM & ADMINISTRATION", "OPERATING SYSTEM & ADMINISTRATION"),
 
     ("OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA",
-    "OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA"),
+     "OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA"),
 
     ("Software Engineering principles and practices",
-    "Software Engineering principles and practices"),
+     "Software Engineering principles and practices"),
 
     ("Indian Constitution", "Indian Constitution"),
 )
@@ -84,17 +84,21 @@ STATUS = (
 
 
 class Sem1Attendance(models.Model):
-    roll = models.ForeignKey(Sem1Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, choices=STATUS, default="Absent")
     semester = models.IntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(1)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM1_SUBS, default=None)
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField()
+
+    def __str__(self):
+        return str(self.roll)
 
     class Meta:
         verbose_name_plural = "Sem-1 Attendance"
+
 
 class Sem2Attendance(models.Model):
     roll = models.ForeignKey(Sem2Students, on_delete=models.CASCADE)
@@ -109,6 +113,7 @@ class Sem2Attendance(models.Model):
     class Meta:
         verbose_name_plural = "Sem-2 Attendance"
 
+
 class Sem3Attendance(models.Model):
     roll = models.ForeignKey(Sem3Students, on_delete=models.CASCADE)
     status = models.CharField(max_length=7, choices=STATUS, default="Present")
@@ -121,6 +126,7 @@ class Sem3Attendance(models.Model):
 
     class Meta:
         verbose_name_plural = "Sem-3 Attendance"
+
 
 class Sem4Attendance(models.Model):
     roll = models.ForeignKey(Sem4Students, on_delete=models.CASCADE)
@@ -135,6 +141,7 @@ class Sem4Attendance(models.Model):
     class Meta:
         verbose_name_plural = "Sem-4 Attendance"
 
+
 class Sem5Attendance(models.Model):
     roll = models.ForeignKey(Sem5Students, on_delete=models.CASCADE)
     status = models.CharField(max_length=7, choices=STATUS, default="Present")
@@ -147,6 +154,7 @@ class Sem5Attendance(models.Model):
 
     class Meta:
         verbose_name_plural = "Sem-5 Attendance"
+
 
 class Sem6Attendance(models.Model):
     roll = models.ForeignKey(Sem6Students, on_delete=models.CASCADE)
