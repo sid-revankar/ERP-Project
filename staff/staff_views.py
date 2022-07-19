@@ -163,23 +163,27 @@ def attendance(request):
 def sem1Attendance(request):
     s = Sem1Students.objects.all()
     if request.method == "POST":
-        subject = request.POST.get("subject")
-        for p in request.POST.getlist("present"):
-            Sem1Attendance.objects.create(
-                roll=p,
-                semester=1,
-                subject=subject,
-                status="Present",
-            )
-        for a in request.POST.getlist("absent"):
-            Sem1Attendance.objects.create(
-                roll=a,
-                semester=1,
-                subject=subject,
-                status="Absent",
-            )
-        messages.success(request, "Attendance saved successfully!")
-        return redirect('/staff/attendance/sem1')
+        if request.POST.getlist("present") or request.POST.getlist("absent"):
+            subject = request.POST.get("subject")
+            for p in request.POST.getlist("present"):
+                Sem1Attendance.objects.create(
+                    roll=p,
+                    semester=1,
+                    subject=subject,
+                    status="Present",
+                )
+            for a in request.POST.getlist("absent"):
+                Sem1Attendance.objects.create(
+                    roll=a,
+                    semester=1,
+                    subject=subject,
+                    status="Absent",
+                )
+            messages.success(request, "Attendance saved successfully!")
+            return redirect('/staff/attendance/sem1')
+        else:
+            messages.error(request, "No data to save, try again!")
+            return redirect('/staff/attendance/sem1')
     return render(request, 'staff/attendance/sem01.html', {'s': s})
 
 
@@ -188,23 +192,27 @@ def sem1Attendance(request):
 def sem2Attendance(request):
     s = Sem2Students.objects.all()
     if request.method == "POST":
-        subject = request.POST.get("subject")
-        for p in request.POST.getlist("present"):
-            Sem2Attendance.objects.create(
-                roll=p,
-                semester=2,
-                subject=subject,
-                status="Present",
-            )
-        for a in request.POST.getlist("absent"):
-            Sem2Attendance.objects.create(
-                roll=a,
-                semester=2,
-                subject=subject,
-                status="Absent",
-            )
-        messages.success(request, "Attendance saved successfully!")
-        return redirect('/staff/attendance/sem2')
+        if request.POST.getlist("present") or request.POST.getlist("absent"):
+            subject = request.POST.get("subject")
+            for p in request.POST.getlist("present"):
+                Sem2Attendance.objects.create(
+                    roll=p,
+                    semester=2,
+                    subject=subject,
+                    status="Present",
+                )
+            for a in request.POST.getlist("absent"):
+                Sem2Attendance.objects.create(
+                    roll=a,
+                    semester=2,
+                    subject=subject,
+                    status="Absent",
+                )
+            messages.success(request, "Attendance saved successfully!")
+            return redirect('/staff/attendance/sem2')
+        else:
+            messages.error(request, "No data to save, try again!")
+            return redirect('/staff/attendance/sem2')
     return render(request, 'staff/attendance/sem02.html', {'s': s})
 
 
@@ -213,23 +221,27 @@ def sem2Attendance(request):
 def sem3Attendance(request):
     s = Sem3Students.objects.all()
     if request.method == "POST":
-        subject = request.POST.get("subject")
-        for p in request.POST.getlist("present"):
-            Sem3Attendance.objects.create(
-                roll=p,
-                semester=3,
-                subject=subject,
-                status="Present",
-            )
-        for a in request.POST.getlist("absent"):
-            Sem3Attendance.objects.create(
-                roll=a,
-                semester=3,
-                subject=subject,
-                status="Absent",
-            )
-        messages.success(request, "Attendance saved successfully!")
-        return redirect('/staff/attendance/sem3')
+        if request.POST.getlist("present") or request.POST.getlist("absent"):
+            subject = request.POST.get("subject")
+            for p in request.POST.getlist("present"):
+                Sem3Attendance.objects.create(
+                    roll=p,
+                    semester=3,
+                    subject=subject,
+                    status="Present",
+                )
+            for a in request.POST.getlist("absent"):
+                Sem3Attendance.objects.create(
+                    roll=a,
+                    semester=3,
+                    subject=subject,
+                    status="Absent",
+                )
+            messages.success(request, "Attendance saved successfully!")
+            return redirect('/staff/attendance/sem3')
+        else:
+            messages.error(request, "No data to save, try again!")
+            return redirect('/staff/attendance/sem3')
     return render(request, 'staff/attendance/sem03.html', {'s': s})
 
 
@@ -238,23 +250,27 @@ def sem3Attendance(request):
 def sem4Attendance(request):
     s = Sem4Students.objects.all()
     if request.method == "POST":
-        subject = request.POST.get("subject")
-        for p in request.POST.getlist("present"):
-            Sem4Attendance.objects.create(
-                roll=p,
-                semester=4,
-                subject=subject,
-                status="Present",
-            )
-        for a in request.POST.getlist("absent"):
-            Sem4Attendance.objects.create(
-                roll=a,
-                semester=4,
-                subject=subject,
-                status="Absent",
-            )
-        messages.success(request, "Attendance saved successfully!")
-        return redirect('/staff/attendance/sem4')
+        if request.POST.getlist("present") or request.POST.getlist("absent"):
+            subject = request.POST.get("subject")
+            for p in request.POST.getlist("present"):
+                Sem4Attendance.objects.create(
+                    roll=p,
+                    semester=4,
+                    subject=subject,
+                    status="Present",
+                )
+            for a in request.POST.getlist("absent"):
+                Sem4Attendance.objects.create(
+                    roll=a,
+                    semester=4,
+                    subject=subject,
+                    status="Absent",
+                )
+            messages.success(request, "Attendance saved successfully!")
+            return redirect('/staff/attendance/sem4')
+        else:
+            messages.error(request, "No data to save, try again!")
+            return redirect('/staff/attendance/sem4')
     return render(request, 'staff/attendance/sem04.html', {'s': s})
 
 
@@ -265,23 +281,27 @@ def sem4Attendance(request):
 def sem5Attendance(request):
     s = Sem5Students.objects.all()
     if request.method == "POST":
-        subject = request.POST.get("subject")
-        for p in request.POST.getlist("present"):
-            Sem5Attendance.objects.create(
-                roll=p,
-                semester=5,
-                subject=subject,
-                status="Present",
-            )
-        for a in request.POST.getlist("absent"):
-            Sem5Attendance.objects.create(
-                roll=a,
-                semester=5,
-                subject=subject,
-                status="Absent",
-            )
-        messages.success(request, "Attendance saved successfully!")
-        return redirect('/staff/attendance/sem5')
+        if request.POST.getlist("present") or request.POST.getlist("absent"):
+            subject = request.POST.get("subject")
+            for p in request.POST.getlist("present"):
+                Sem5Attendance.objects.create(
+                    roll=p,
+                    semester=5,
+                    subject=subject,
+                    status="Present",
+                )
+            for a in request.POST.getlist("absent"):
+                Sem5Attendance.objects.create(
+                    roll=a,
+                    semester=5,
+                    subject=subject,
+                    status="Absent",
+                )
+            messages.success(request, "Attendance saved successfully!")
+            return redirect('/staff/attendance/sem5')
+        else:
+            messages.error(request, "No data to save, try again!")
+            return redirect('/staff/attendance/sem5')
     return render(request, 'staff/attendance/sem05.html', {'s': s})
 
 
@@ -292,23 +312,27 @@ def sem5Attendance(request):
 def sem6Attendance(request):
     s = Sem6Students.objects.all()
     if request.method == "POST":
-        subject = request.POST.get("subject")
-        for p in request.POST.getlist("present"):
-            Sem6Attendance.objects.create(
-                roll=p,
-                semester=6,
-                subject=subject,
-                status="Present",
-            )
-        for a in request.POST.getlist("absent"):
-            Sem6Attendance.objects.create(
-                roll=a,
-                semester=6,
-                subject=subject,
-                status="Absent",
-            )
-        messages.success(request, "Attendance saved successfully!")
-        return redirect('/staff/attendance/sem6')
+        if request.POST.getlist("present") or request.POST.getlist("absent"):
+            subject = request.POST.get("subject")
+            for p in request.POST.getlist("present"):
+                Sem6Attendance.objects.create(
+                    roll=p,
+                    semester=6,
+                    subject=subject,
+                    status="Present",
+                )
+            for a in request.POST.getlist("absent"):
+                Sem6Attendance.objects.create(
+                    roll=a,
+                    semester=6,
+                    subject=subject,
+                    status="Absent",
+                )
+            messages.success(request, "Attendance saved successfully!")
+            return redirect('/staff/attendance/sem6')
+        else:
+            messages.error(request, "No data to save, try again!")
+            return redirect('/staff/attendance/sem6')
     return render(request, 'staff/attendance/sem06.html', {'s': s})
 
 
