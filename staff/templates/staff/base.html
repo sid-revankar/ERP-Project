@@ -8,19 +8,17 @@
     <!-- Bootstrap icons -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
     />
+
     <!-- DataTable CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-dataTable.css' %} " />
+
     <link
       rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css"
+      href="{% static 'css/dataTables.bootstrap5.min.css' %} "
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css"
-    />
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -126,17 +124,13 @@
                 </li>
               </ul>
             </li>
-            <!-- <li class="nav-item form-switch mt-2">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                id="lightSwitch"
-              />
-            </li> -->
           </ul>
           {% endif %}
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link">{{ user.username }}</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
@@ -151,10 +145,20 @@
     </nav>
     <!-- messages -->
     {% if messages %} {% for msg in messages %}
-    <div class="container mt-2 alert {{ msg.tags }}" id="msg" role="alert">
+    <div
+      class="container mt-2 alert alert-dismissible fade show {{ msg.tags }}"
+      id="msg"
+      role="alert"
+    >
       <div>
         <i class="bi bi-caret-right-fill"></i>
         {{ msg }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
       </div>
     </div>
     {% endfor %} {% endif %}
@@ -166,19 +170,17 @@
     <!-- ./end -->
 
     <!-- Bootstrap Bundle with Popper -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+
     <!-- user and datatable scripts -->
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="{% static 'js/jquery-3.6.0.js' %}"></script>
+
     <script
       type="text/javascript"
       charset="utf8"
-      src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"
+      src="{% static 'js/dataTable-min.js' %}"
     ></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{% static 'js/dataTable-bootstrap5-min.js' %}"></script>
     <script>
       // function to sort the 5th column (day column) of timetable in ascending order
       $(document).ready(function () {
@@ -197,117 +199,13 @@
         $("#feedback").DataTable();
       });
     </script>
-    <script>
+    <!-- <script>
       setTimeout(function () {
         $("#msg").remove();
       }, 5000);
-    </script>
+    </script> -->
     <!-- ./end -->
     <!-- font awesome kit -->
-    <script
-      src="https://kit.fontawesome.com/bc60bcb3fa.js"
-      crossorigin="anonymous"
-    ></script>
-
-    <!-- <script>
-      /**
-       *  Light Switch @version v0.1.3
-       */
-
-      (function () {
-        let lightSwitch = document.getElementById("lightSwitch");
-        if (!lightSwitch) {
-          return;
-        }
-
-        /**
-         * @function darkmode
-         * @summary: changes the theme to 'dark mode' and save settings to local stroage.
-         * Basically, replaces/toggles every CSS class that has '-light' class with '-dark'
-         */
-        function darkMode() {
-          document.querySelectorAll(".bg-light").forEach((element) => {
-            element.className = element.className.replace(/-light/g, "-dark");
-          });
-
-          document.body.classList.add("bg-dark");
-
-          if (document.body.classList.contains("text-dark")) {
-            document.body.classList.replace("text-dark", "text-light");
-          } else {
-            document.body.classList.add("text-light");
-          }
-
-          // set light switch input to true
-          if (!lightSwitch.checked) {
-            lightSwitch.checked = true;
-          }
-          localStorage.setItem("lightSwitch", "dark");
-        }
-
-        /**
-         * @function lightmode
-         * @summary: changes the theme to 'light mode' and save settings to local stroage.
-         */
-        function lightMode() {
-          document.querySelectorAll(".bg-dark").forEach((element) => {
-            element.className = element.className.replace(/-dark/g, "-light");
-          });
-
-          document.body.classList.add("bg-light");
-
-          if (document.body.classList.contains("text-light")) {
-            document.body.classList.replace("text-light", "text-dark");
-          } else {
-            document.body.classList.add("text-dark");
-          }
-
-          if (lightSwitch.checked) {
-            lightSwitch.checked = false;
-          }
-          localStorage.setItem("lightSwitch", "light");
-        }
-
-        /**
-         * @function onToggleMode
-         * @summary: the event handler attached to the switch. calling @darkMode or @lightMode depending on the checked state.
-         */
-        function onToggleMode() {
-          if (lightSwitch.checked) {
-            darkMode();
-          } else {
-            lightMode();
-          }
-        }
-
-        /**
-         * @function getSystemDefaultTheme
-         * @summary: get system default theme by media query
-         */
-        function getSystemDefaultTheme() {
-          const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-          if (darkThemeMq.matches) {
-            return "dark";
-          }
-          return "light";
-        }
-
-        function setup() {
-          var settings = localStorage.getItem("lightSwitch");
-          if (settings == null) {
-            settings = getSystemDefaultTheme();
-          }
-
-          if (settings == "dark") {
-            lightSwitch.checked = true;
-          }
-
-          lightSwitch.addEventListener("change", onToggleMode);
-          onToggleMode();
-        }
-
-        setup();
-      })();
-    </script> -->
+    <script src="{% static 'js/font-awesome.js' %}"></script>
   </body>
 </html>

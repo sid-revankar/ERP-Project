@@ -91,8 +91,8 @@ def oddSemUpload(request):
                     kx1=row['KX-1'],
                     ki1=row['KI-1'],
                     k_result=row['K-Result']
-                ))
-
+                )
+            )
             oddSemResult.objects.bulk_create(result)
             messages.success(request, "CSV Uploaded Successfully")
         else:
@@ -144,14 +144,14 @@ def evenSemUpload(request):
             messages.error(request, "Invalid File Format, Please Try Again!")
     return render(request, "results/evenResult.html")
 
-
+@login_required
 def evenResultDelete(request):
     if request.user.is_superuser:
         evenSemResult.objects.all().delete()
         messages.success(request, 'All even semester results deleted!')
         return redirect('/results/view/even/')
 
-
+@login_required
 def oddResultDelete(request):
     if request.user.is_superuser:
         oddSemResult.objects.all().delete()

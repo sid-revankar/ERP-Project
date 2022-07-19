@@ -11,8 +11,8 @@ class Sem1Students(models.Model):
     email = models.CharField(max_length=100, default=None)
     class_details = models.CharField(max_length=100, default=None)
 
-    def __str__(self):
-        return str(self.roll_no)
+    # def __str__(self):
+    #     return str(self.roll_no)
 
     class Meta:
         verbose_name_plural = "Sem-1 Students"

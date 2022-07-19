@@ -23,7 +23,6 @@
       <td>{{x.email }}</td>
       <td>{{x.class_details }}</td>
       <td>
-
         <a
           href="{% url 'update4' x.id %}"
           class="btn btn-outline-primary rounded-pill"
@@ -43,5 +42,49 @@
     </tr>
     {% endfor %}
   </tbody>
+  {% if user.is_superuser %}
+  <!-- delete all modal trigger -->
+  <caption>
+    <!-- Button trigger modal -->
+    <button
+      class="ms-1 btn btn-sm btn-outline-danger"
+      data-bs-toggle="modal"
+      data-bs-target="#sem4DeleteModal"
+    >
+      Delete all
+    </button>
+  </caption>
+  <!-- end -->
+  {% endif %}
 </table>
+
+<!-- Modal -->
+<div class="modal fade" id="sem4DeleteModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="exampleModalLabel">Remove Results</h5> -->
+        <h5 class="modal-title">
+          Do you really want to delete all student records?
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          No
+        </button>
+        <a href="{% url 'sem4-delete' %}" type="button" class="btn btn-danger"
+          >Yes</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end -->
 {% endblock %}

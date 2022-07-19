@@ -11,7 +11,7 @@ class Timetable(models.Model):
     room_no = models.CharField(max_length=7)
     time = models.TimeField()
     semester = models.IntegerField()
-    day = models.CharField(max_length=20, default=None)
+    day = models.CharField(max_length=20)
 
 
 SEM1_SUBS = (
@@ -20,7 +20,7 @@ SEM1_SUBS = (
     ("FUNDAMENTALS OF COMPUTER", "FUNDAMENTALS OF COMPUTER"),
 
     ("FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB",
-    "FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB"),
+     "FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB"),
 
     ("IT SKILLS LAB", "IT SKILLS LAB"),
 
@@ -32,10 +32,10 @@ SEM2_SUBS = (
 
     ("STATISTICS AND ANALYSIS", "STATISTICS AND ANALYSIS"),
 
-    ("COMMUNICATION SKILLS","COMMUNICATION SKILLS"),
+    ("COMMUNICATION SKILLS", "COMMUNICATION SKILLS"),
 
     ("CAEG (COMPUTER AIDED ENGINEERING GRAPHICS)",
-    "CAEG (COMPUTER AIDED ENGINEERING GRAPHICS)"),
+     "CAEG (COMPUTER AIDED ENGINEERING GRAPHICS)"),
 
     ("MULTIMEDIA & ANIMATION", "MULTIMEDIA & ANIMATION"),
 
@@ -46,9 +46,9 @@ SEM3_SUBS = (
     ("PYTHON PROGRAMMING", "PYTHON PROGRAMMING"),
 
     ("COMPUTER HARDWARE, MAINTENANCE AND ADMINISTRATION",
-    "COMPUTER HARDWARE, MAINTENANCE AND ADMINISTRATION"),
+     "COMPUTER HARDWARE, MAINTENANCE AND ADMINISTRATION"),
 
-    ("COMPUTER NETWORKS","COMPUTER NETWORKS"),
+    ("COMPUTER NETWORKS", "COMPUTER NETWORKS"),
 
     ("DATABASE SYSTEM CCONCEPTS & PL/SQL", "DATABASE SYSTEM CCONCEPTS & PL/SQL"),
 
@@ -61,102 +61,120 @@ SEM4_SUBS = (
     ("OPERATING SYSTEM & ADMINISTRATION", "OPERATING SYSTEM & ADMINISTRATION"),
 
     ("OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA",
-    "OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA"),
+     "OBJECT ORIENTED PROGRAMMING & DESIGN WITH JAVA"),
 
     ("Software Engineering principles and practices",
-    "Software Engineering principles and practices"),
+     "Software Engineering principles and practices"),
 
     ("Indian Constitution", "Indian Constitution"),
 )
 
 SEM5_SUBS = (
-    ("placeholder", "placeholder"),
+    ("Cloud Computing ", "Cloud Computing "),
 )
 
 SEM6_SUBS = (
-    ("placeholder", "placeholder"),
-)
-
-STATUS = (
-    ("Present", "Present"),
-    ("Absent", "Absent"),
+    ("Inplant Training/Project Work", "Inplant Training/Project Work"),
 )
 
 
 class Sem1Attendance(models.Model):
-    roll = models.ForeignKey(Sem1Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(1)]
     )
     subject = models.CharField(
-        max_length=255, choices=SEM1_SUBS, default=None)
+        max_length=255, choices=SEM1_SUBS)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
+
     class Meta:
-        verbose_name_plural = "Sem-1 Attendance"
+        verbose_name_plural = "Sem-1 Attendances"
+
 
 class Sem2Attendance(models.Model):
-    roll = models.ForeignKey(Sem2Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=2, validators=[MinValueValidator(2), MaxValueValidator(2)]
     )
     subject = models.CharField(
-        max_length=255, choices=SEM2_SUBS, default=None)
+        max_length=255, choices=SEM2_SUBS)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
+
     class Meta:
-        verbose_name_plural = "Sem-2 Attendance"
+        verbose_name_plural = "Sem-2 Attendances"
+
 
 class Sem3Attendance(models.Model):
-    roll = models.ForeignKey(Sem3Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=3, validators=[MinValueValidator(3), MaxValueValidator(3)]
     )
     subject = models.CharField(
-        max_length=255, choices=SEM3_SUBS, default=None)
+        max_length=255, choices=SEM3_SUBS)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
+
     class Meta:
-        verbose_name_plural = "Sem-3 Attendance"
+        verbose_name_plural = "Sem-3 Attendances"
+
 
 class Sem4Attendance(models.Model):
-    roll = models.ForeignKey(Sem4Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=4, validators=[MinValueValidator(4), MaxValueValidator(4)]
     )
     subject = models.CharField(
-        max_length=255, choices=SEM4_SUBS, default=None)
+        max_length=255, choices=SEM4_SUBS)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
+
     class Meta:
-        verbose_name_plural = "Sem-4 Attendance"
+        verbose_name_plural = "Sem-4 Attendances"
+
 
 class Sem5Attendance(models.Model):
-    roll = models.ForeignKey(Sem5Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=5, validators=[MinValueValidator(5), MaxValueValidator(5)]
     )
     subject = models.CharField(
-        max_length=255, choices=SEM5_SUBS, default=None)
+        max_length=255, choices=SEM5_SUBS)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
+
     class Meta:
-        verbose_name_plural = "Sem-5 Attendance"
+        verbose_name_plural = "Sem-5 Attendances"
+
 
 class Sem6Attendance(models.Model):
-    roll = models.ForeignKey(Sem6Students, on_delete=models.CASCADE)
-    status = models.CharField(max_length=7, choices=STATUS, default="Present")
+    roll = models.IntegerField()
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=6, validators=[MinValueValidator(6), MaxValueValidator(6)]
     )
     subject = models.CharField(
-        max_length=255, choices=SEM6_SUBS, default=None)
+        max_length=255, choices=SEM6_SUBS)
     date = models.DateField(auto_now_add=True)
 
+    def __str__(self):
+        return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
+
     class Meta:
-        verbose_name_plural = "Sem-6 Attendance"
+        verbose_name_plural = "Sem-6 Attendances"
