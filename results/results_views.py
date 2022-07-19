@@ -91,8 +91,8 @@ def oddSemUpload(request):
                     kx1=row['KX-1'],
                     ki1=row['KI-1'],
                     k_result=row['K-Result']
-                ))
-
+                )
+            )
             oddSemResult.objects.bulk_create(result)
             messages.success(request, "CSV Uploaded Successfully")
         else:

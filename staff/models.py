@@ -80,13 +80,13 @@ SEM6_SUBS = (
 
 class Sem1Attendance(models.Model):
     roll = models.IntegerField()
-    status = models.CharField(max_length=7)
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=1, validators=[MinValueValidator(1), MaxValueValidator(1)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM1_SUBS)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
@@ -97,13 +97,13 @@ class Sem1Attendance(models.Model):
 
 class Sem2Attendance(models.Model):
     roll = models.IntegerField()
-    status = models.CharField(max_length=7)
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=2, validators=[MinValueValidator(2), MaxValueValidator(2)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM2_SUBS)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
@@ -114,13 +114,13 @@ class Sem2Attendance(models.Model):
 
 class Sem3Attendance(models.Model):
     roll = models.IntegerField()
-    status = models.CharField(max_length=7)
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=3, validators=[MinValueValidator(3), MaxValueValidator(3)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM3_SUBS)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
@@ -131,13 +131,13 @@ class Sem3Attendance(models.Model):
 
 class Sem4Attendance(models.Model):
     roll = models.IntegerField()
-    status = models.CharField(max_length=7)
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=4, validators=[MinValueValidator(4), MaxValueValidator(4)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM4_SUBS)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
@@ -148,13 +148,13 @@ class Sem4Attendance(models.Model):
 
 class Sem5Attendance(models.Model):
     roll = models.IntegerField()
-    status = models.CharField(max_length=7)
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=5, validators=[MinValueValidator(5), MaxValueValidator(5)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM5_SUBS)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)
@@ -165,13 +165,13 @@ class Sem5Attendance(models.Model):
 
 class Sem6Attendance(models.Model):
     roll = models.IntegerField()
-    status = models.CharField(max_length=7)
+    status = models.CharField(max_length=7, default="Present")
     semester = models.IntegerField(
         default=6, validators=[MinValueValidator(6), MaxValueValidator(6)]
     )
     subject = models.CharField(
         max_length=255, choices=SEM6_SUBS)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return ("Roll Number: " + str(self.roll) + ", Date: " + str(self.date) + ", Subject: " + self.subject)

@@ -79,10 +79,20 @@
     </nav>
     <!-- messages -->
     {% if messages %} {% for msg in messages %}
-    <div class="container mt-2 alert {{ msg.tags }}" id="msg" role="alert">
+    <div
+      class="container mt-2 alert alert-dismissible fade show {{ msg.tags }}"
+      id="msg"
+      role="alert"
+    >
       <div>
         <i class="bi bi-caret-right-fill"></i>
         {{ msg }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
       </div>
     </div>
     {% endfor %} {% endif %}

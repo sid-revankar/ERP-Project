@@ -164,14 +164,19 @@ def sem1Attendance(request):
     s = Sem1Students.objects.all()
     if request.method == "POST":
         subject = request.POST.get("subject")
-        date = request.POST.get("date")
-        for r in request.POST.getlist("roll"):
+        for p in request.POST.getlist("present"):
             Sem1Attendance.objects.create(
-                roll=r,
+                roll=p,
+                semester=1,
+                subject=subject,
+                status="Present",
+            )
+        for a in request.POST.getlist("absent"):
+            Sem1Attendance.objects.create(
+                roll=a,
                 semester=1,
                 subject=subject,
                 status="Absent",
-                date=date,
             )
         messages.success(request, "Attendance saved successfully!")
         return redirect('/staff/attendance/sem1')
@@ -184,14 +189,19 @@ def sem2Attendance(request):
     s = Sem2Students.objects.all()
     if request.method == "POST":
         subject = request.POST.get("subject")
-        date = request.POST.get("date")
-        for r in request.POST.getlist("roll"):
+        for p in request.POST.getlist("present"):
             Sem2Attendance.objects.create(
-                roll=r,
+                roll=p,
+                semester=2,
+                subject=subject,
+                status="Present",
+            )
+        for a in request.POST.getlist("absent"):
+            Sem2Attendance.objects.create(
+                roll=a,
                 semester=2,
                 subject=subject,
                 status="Absent",
-                date=date,
             )
         messages.success(request, "Attendance saved successfully!")
         return redirect('/staff/attendance/sem2')
@@ -204,14 +214,19 @@ def sem3Attendance(request):
     s = Sem3Students.objects.all()
     if request.method == "POST":
         subject = request.POST.get("subject")
-        date = request.POST.get("date")
-        for r in request.POST.getlist("roll"):
+        for p in request.POST.getlist("present"):
             Sem3Attendance.objects.create(
-                roll=r,
+                roll=p,
+                semester=3,
+                subject=subject,
+                status="Present",
+            )
+        for a in request.POST.getlist("absent"):
+            Sem3Attendance.objects.create(
+                roll=a,
                 semester=3,
                 subject=subject,
                 status="Absent",
-                date=date,
             )
         messages.success(request, "Attendance saved successfully!")
         return redirect('/staff/attendance/sem3')
@@ -224,14 +239,19 @@ def sem4Attendance(request):
     s = Sem4Students.objects.all()
     if request.method == "POST":
         subject = request.POST.get("subject")
-        date = request.POST.get("date")
-        for r in request.POST.getlist("roll"):
+        for p in request.POST.getlist("present"):
             Sem4Attendance.objects.create(
-                roll=r,
+                roll=p,
+                semester=4,
+                subject=subject,
+                status="Present",
+            )
+        for a in request.POST.getlist("absent"):
+            Sem4Attendance.objects.create(
+                roll=a,
                 semester=4,
                 subject=subject,
                 status="Absent",
-                date=date,
             )
         messages.success(request, "Attendance saved successfully!")
         return redirect('/staff/attendance/sem4')
@@ -246,14 +266,19 @@ def sem5Attendance(request):
     s = Sem5Students.objects.all()
     if request.method == "POST":
         subject = request.POST.get("subject")
-        date = request.POST.get("date")
-        for r in request.POST.getlist("roll"):
+        for p in request.POST.getlist("present"):
             Sem5Attendance.objects.create(
-                roll=r,
+                roll=p,
+                semester=5,
+                subject=subject,
+                status="Present",
+            )
+        for a in request.POST.getlist("absent"):
+            Sem5Attendance.objects.create(
+                roll=a,
                 semester=5,
                 subject=subject,
                 status="Absent",
-                date=date,
             )
         messages.success(request, "Attendance saved successfully!")
         return redirect('/staff/attendance/sem5')
@@ -268,14 +293,19 @@ def sem6Attendance(request):
     s = Sem6Students.objects.all()
     if request.method == "POST":
         subject = request.POST.get("subject")
-        date = request.POST.get("date")
-        for r in request.POST.getlist("roll"):
+        for p in request.POST.getlist("present"):
             Sem6Attendance.objects.create(
-                roll=r,
+                roll=p,
+                semester=6,
+                subject=subject,
+                status="Present",
+            )
+        for a in request.POST.getlist("absent"):
+            Sem6Attendance.objects.create(
+                roll=a,
                 semester=6,
                 subject=subject,
                 status="Absent",
-                date=date,
             )
         messages.success(request, "Attendance saved successfully!")
         return redirect('/staff/attendance/sem6')

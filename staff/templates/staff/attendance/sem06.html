@@ -4,12 +4,10 @@
 <form method="POST">
   {% csrf_token %}
   <div class="input-group mb-3">
-    <label class="input-group-text" for="date">Attendance date</label>
-    <input type="date" required class="form-control" name="date" id="date" />
+    <label class="input-group-text" for="subject">Choose Subject</label>
 
-    <select name="subject" class="form-select">
-      <option selected>Choose subject...</option>
-	  <option value="Inplant Training">Inplant Training</option>
+    <select name="subject" class="form-select" id="subject">
+      <option selected value="Inplant Training">Inplant Training</option>
     </select>
   </div>
 
@@ -25,8 +23,14 @@
         <td>
           <input
             type="checkbox"
-            name="roll"
-            id="roll"
+            name="present"
+            class="form-check-input"
+            value="{{ i.roll_no }}"
+          />
+          <label for="roll" class="form-check-label">Present</label>
+          <input
+            type="checkbox"
+            name="absent"
             class="form-check-input"
             value="{{ i.roll_no }}"
           />
