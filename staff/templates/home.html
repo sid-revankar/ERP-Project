@@ -31,17 +31,30 @@
         }
 
         #card_bg{
-            background-image: url("/static/home_imgs/book.gif");
+            background-image: url("https://media0.giphy.com/media/2yuPmPjkoWeJL4xGFi/giphy.gif");
             background-size: 100%;
-            background-position: 50% 20%;
+            background-position: center;
             background-repeat: no-repeat;
 
         }
 
         #card_bg2{
-            background-image: url("static/home_imgs/pen_book.gif");
+            background-image: url("https://media2.giphy.com/media/du5lsdiIZJHmCcGIKu/giphy.gif");
             background-size: 100%;
+            background-position: center;
             
+        }
+
+        #staff_p{
+            font-weight: 500;
+        }
+
+        #std_p{
+            font-weight: 500;
+        }
+
+        #nav_txt{
+          font-weight: 400;
         }
 
         #sec1{
@@ -94,7 +107,7 @@
             <h1>
               KLS Shri <span class="text-warning"> Vasantrao Potdar </span>
             </h1>
-            <p class="lead my-4">Student management tool</p>
+            <p class="lead my-4" id="nav_txt">Enterprise resource planning tool</p>
           </div>
         </div>
       </div>
@@ -127,7 +140,7 @@
                   <i class="bi bi-people"></i>
                 </div>
                 <h3 class="card-title mb-3">Student</h3>
-                <p class="card-text">Students can visit their portal.</p>
+                <p class="card-text" id="std_p">Students can visit their portal.</p>
                 <a href="{% url 'student-home' %}" class="btn btn-primary"
                   >Visit</a
                 >
