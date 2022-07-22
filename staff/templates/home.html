@@ -11,56 +11,53 @@
     />
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} " />
-    <title>Erp Tool</title>
+    <title>ERP Tool</title>
 
     <style>
-        #dash{
-            background-image: url("/static/home_imgs/6gif.gif");
-        }
+      #dash {
+        background-image: url("/static/home_imgs/6gif.gif");
+      }
 
-        #nav2{
-          background-image: url("/static/home_imgs/3gif.gif" );
-          background-size: cover;
-          position: relative;
-          top: 50px;
-        }
+      #nav2 {
+        background-image: url("/static/home_imgs/3gif.gif");
+        background-size: cover;
+        position: relative;
+        top: 50px;
+      }
 
-        #cards{
-          position: relative;
-          top: 50px;
-        }
+      #cards {
+        position: relative;
+        top: 50px;
+      }
 
-        #card_bg{
-            background-image: url("https://media0.giphy.com/media/2yuPmPjkoWeJL4xGFi/giphy.gif");
-            background-size: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
+      #card_bg {
+        background-image: url("https://media0.giphy.com/media/2yuPmPjkoWeJL4xGFi/giphy.gif");
+        background-size: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-        }
+      #card_bg2 {
+        background-image: url("https://media2.giphy.com/media/du5lsdiIZJHmCcGIKu/giphy.gif");
+        background-size: 100%;
+        background-position: center;
+      }
 
-        #card_bg2{
-            background-image: url("https://media2.giphy.com/media/du5lsdiIZJHmCcGIKu/giphy.gif");
-            background-size: 100%;
-            background-position: center;
-            
-        }
+      #staff_p {
+        font-weight: 500;
+      }
 
-        #staff_p{
-            font-weight: 500;
-        }
+      #std_p {
+        font-weight: 500;
+      }
 
-        #std_p{
-            font-weight: 500;
-        }
+      #nav_txt {
+        font-weight: 400;
+      }
 
-        #nav_txt{
-          font-weight: 400;
-        }
-
-        #sec1{
-            background: blueviolet;
-        }
-        
+      #sec1 {
+        background: blueviolet;
+      }
     </style>
   </head>
   <body>
@@ -105,9 +102,11 @@
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
             <h1>
-              KLS Shri <span class="text-warning"> Vasantrao Potdar </span>
+              KLS's Shri <span class="text-warning"> Vasantrao Potdar</span>
             </h1>
-            <p class="lead my-4" id="nav_txt">Enterprise resource planning tool</p>
+            <p class="lead my-4" id="nav_txt">
+              Enterprise resource planning tool
+            </p>
           </div>
         </div>
       </div>
@@ -119,14 +118,16 @@
           <div class="col-md">
             <div class="card text-dark" id="card_bg">
               <div class="card-body text-center">
-                <div class="h1 mb-3">
+                <h1>
                   <i class="bi bi-laptop"></i>
-                </div>
+                </h1>
                 <h3 class="card-title mb-3">Staff</h3>
                 <p class="text-dark" id="staff_p">
                   Teachers can login to their portal using login details.
                 </p>
-                <a href="{% url 'staff-home' %}" class="btn btn-primary"
+                <a
+                  href="{% url 'staff-home' %}"
+                  class="btn btn-primary rounded-pill"
                   >Login</a
                 >
               </div>
@@ -136,12 +137,16 @@
           <div class="col-md">
             <div class="card bg-dark text-dark" id="card_bg2">
               <div class="card-body text-center">
-                <div class="h1 mb-3">
+                <h1>
                   <i class="bi bi-people"></i>
-                </div>
+                </h1>
                 <h3 class="card-title mb-3">Student</h3>
-                <p class="card-text" id="std_p">Students can visit their portal.</p>
-                <a href="{% url 'student-home' %}" class="btn btn-primary"
+                <p class="card-text" id="std_p">
+                  Students can visit their portal.
+                </p>
+                <a
+                  href="{% url 'student-home' %}"
+                  class="btn btn-primary rounded-pill"
                   >Visit</a
                 >
               </div>
