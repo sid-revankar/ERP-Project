@@ -194,3 +194,14 @@ class IaSem4(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SemSubjects(models.Model):
+    sem = models.IntegerField(default=None)
+    subject = models.CharField(max_length=50, default=None)
+    code = models.CharField(max_length=7, default=None)
+
+    def __str__(self):
+        return self.subject
+    class Meta:
+        verbose_name_plural = 'Sem Subjects'

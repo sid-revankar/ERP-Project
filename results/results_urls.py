@@ -14,5 +14,7 @@ urlpatterns = [
     path('results/ia/sem4/', views.iaSem4Upload, name="iasem4-upload"),
     path('results/delete/even/', views.evenResultDelete, name="even-result-delete"),
     path('results/delete/odd/', views.oddResultDelete, name="odd-result-delete"),
+    path('results/view/search', views.searchResult, name="result-search"),
+
 
 ]

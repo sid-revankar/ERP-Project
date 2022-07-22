@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %} " />
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-dataTable.css' %} " />
+
+    <link
+      rel="stylesheet"
+      href="{% static 'css/dataTables.bootstrap5.min.css' %} "
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Result</title>
+  </head>
+  <body class="bg-dark">
+    <!-- main container start -->
+    <div class="container">
+      <!-- messages -->
+      {% if messages %} {% for msg in messages %}
+      <div
+        class="container mt-2 alert alert-dismissible fade show {{ msg.tags }}"
+        id="msg"
+        role="alert"
+      >
+        <div>
+          <i class="bi bi-caret-right-fill"></i>
+          {{ msg }}
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+      </div>
+      {% endfor %} {% endif %}
+      <!-- end messages -->
+      <nav class="navbar" style="--bs-breadcrumb-divider: '>'">
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="/">ERP</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'student-home' %}">Home</a>
+          </li>
+          <li class="breadcrumb-item text-white">Result</li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Search
+          </li>
+        </ul>
+      </nav>
+      <h1 class="text-center text-white display-3">
+        Diploma Examination Result
+      </h1>
+      <!-- start of the form element -->
+      <form method="post">
+        {% csrf_token %}
+        <!-- start of the input columns -->
+        <div class="input-group mt-4">
+          <!-- main div start-->
+          <!-- input group text start -->
+          <label
+            for="reg_no"
+            class="input-group-text border-3 border-secondary text-white bg-dark fw-bold fs-5"
+            >Enter your register number
+          </label>
+          <!-- input group text end -->
+          <!-- input field for register -->
+          <input
+            type="text"
+            id="reg_no"
+            name="reg-no"
+            minlength="10"
+            maxlength="10"
+            required
+            class="form-control border-3 border-secondary text-white bg-dark fs-6"
+            value="{% for i in query %}{{ i.reg_no }}{% endfor %}"
+          />
+          <!-- input field end -->
+          <!-- select field for semester -->
+          <select
+            required
+            class="form-select border-3 border-secondary text-white bg-dark fs-6"
+            id="select"
+            name="sem-sel"
+          >
+            <option selected value="">Select your semester </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <!-- select field end -->
+          <!-- submit button -->
+        </div>
+        <!-- main div end -->
+        <div class="input-group mt-4">
+          <input
+            type="submit"
+            value="Submit"
+            class="btn fw-bold fw-6 rounded-pill btn-primary btn-lg me-2"
+          />
+          <!-- button end -->
+          <!-- reset button -->
+          <input
+            type="reset"
+            value="Reset"
+            class="btn fw-bold fw-6 rounded-pill btn-danger btn-lg"
+          />
+          <!-- button end -->
+        </div>
+        <!-- end of the input columns -->
+      </form>
+      <!-- end of the form element -->
+      {% if request.method == 'POST' %} {% for i in query %}
+      <!-- POST DATA START -->
+      <p class="mt-5">
+        <!-- p class for formatting of span tags -->
+        <span class="text-white fs-5 fw-bold">
+          <!-- text info start -->
+          <span class="text-muted fw-normal"> Register Number: </span> 
+        {{ i.reg_no }}
+        </span>
+        <br />
+        <span class="text-white fs-5 fw-bold">
+          <span class="text-muted fw-normal"> Student Name: </span> {{ i.student_name }}
+        </span>
+        <br />
+        <span class="text-white fs-5 fw-bold">
+          <span class="text-muted fw-normal">Institution: </span> 457 - Shri
+          Vasantrao Potdar Polytechnic
+        </span>
+        <!-- text info end -->
+      </p>
+      <!-- p tag end -->
+      <table
+        class="table table-striped-columns border-secondary text-center table-bordered table-dark mt-2"
+      >
+        <!-- table start -->
+        <thead>
+          <!-- table heading start -->
+          <tr>
+            <th scope="col">Sl.No</th>
+            <th scope="col">Subject Name</th>
+            <th scope="col">Exam Marks</th>
+            <th scope="col">IA Marks</th>
+            <th scope="col">Total Marks</th>
+            <th scope="col">Result</th>
+            <th scope="col">Subject Code</th>
+          </tr>
+          <!-- table heading end -->
+        </thead>
+        <tbody>
+          <!-- table content start -->
+          <tr>
+            <th>1</th>
+            <td>{{ c }}</td>
+            <td>{{ i.ex1 }}</td>
+            <td>{{ i.ia1 }}</td>
+            <td>{{ c_total }}</td>
+            <td>{{ r_ex1 }}</td>
+            <td>{{ c_code }}</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>{{ co }}</td>
+            <td>{{ i.ex2 }}</td>
+            <td>{{ i.ia2 }}</td>
+            <td>{{ co_total }}</td>
+            <td>{{ r_ex2 }}</td>
+            <td>{{ co_code }}</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>{{ dbms }}</td>
+            <td>{{ i.ex3 }}</td>
+            <td>{{ i.ia3 }}</td>
+            <td>{{ db_total }}</td>
+            <td>{{ r_ex3 }}</td>
+            <td>{{ db_code}}</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>{{ cn }}</td>
+            <td>{{ i.ex4 }}</td>
+            <td>{{ i.ia4 }}</td>
+            <td>{{ cn_total }}</td>
+            <td>{{ r_ex4 }}</td>
+            <td>{{ cn_code }}</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>{{ cl }}</td>
+            <td>{{ i.ex5 }}</td>
+            <td>{{ i.ia5 }}</td>
+            <td>{{ cl_total }}</td>
+            <td>{{ r_ex5 }}</td>
+            <td>{{ cl_code }}</td>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>{{ dl }}</td>
+            <td>{{ i.ex6 }}</td>
+            <td>{{ i.ia6 }}</td>
+            <td>{{ dl_total }}</td>
+            <td>{{ r_ex6 }}</td>
+            <td>{{ dl_code }}</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>{{ nl }}</td>
+            <td>{{ i.ex7 }}</td>
+            <td>{{ i.ia7 }}</td>
+            <td>{{ nl_total }}</td>
+            <td>{{ r_ex7 }}</td>
+            <td>{{ nl_code }}</td>
+          </tr>
+          <!-- table content end -->
+        </tbody>
+      </table>
+      <p class="mt-2">
+        <!-- p class for formatting of span tags -->
+        <span class="text-white fs-5 fw-bold">
+          <!-- text info start -->
+          <span class="text-muted fw-normal"> Total Exam Marks: </span> 
+        {{ i.ex_total }}
+        </span>
+        <br />
+        <span class="text-white fs-5 fw-bold">
+          <span class="text-muted fw-normal"> Total IA Marks: </span> {{ i.ia_total }}
+        </span>
+        <br />
+        <span class="text-white fs-5 fw-bold">
+          <span class="text-muted fw-normal">Grand Total: </span> {{ i.total }}
+        </span>
+        <br>
+        <span class="text-white fs-5 fw-bold">
+          <span class="text-muted fw-normal">Result: </span> {{ i.result}}
+        </span>
+        <!-- text info end -->
+      </p>
+      <!-- p tag end -->
+      <!-- POST DATA END -->
+      {% endfor %} {% endif %}
+    </div>
+    <!-- main container end -->
+  </body>
+</html>

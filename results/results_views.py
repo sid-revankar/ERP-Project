@@ -12,7 +12,7 @@ import pandas as pd
 import os
 
 # MODEL IMPORT
-from .models import oddSemResult, evenSemResult, IaSem1, IaSem2, IaSem3, IaSem4
+from .models import SemSubjects, oddSemResult, evenSemResult, IaSem1, IaSem2, IaSem3, IaSem4
 from students.models import Sem1Students, Sem2Students, Sem3Students, Sem4Students
 
 # Displays the table contents on the ODD-Data-Table
@@ -214,3 +214,85 @@ def iaSem4Upload(request):
     else:
         form4 = Sem4IaForm()
     return render(request, 'ia/sem4.html', {'form4': form4})
+
+def searchResult(request):
+    if request.method == "POST":
+        regno = request.POST.get('reg-no')
+        sem =  request.POST.get('sem-sel')
+        sub = SemSubjects.objects.values_list('subject')
+        code = SemSubjects.objects.values_list('code')
+        q = oddSemResult.objects.filter(reg_no = regno, sem = sem)
+        for i in q:
+            c_total = int(i.ex1) + int(float(i.ia1))
+            co_total = int(i.ex2) + int(float(i.ia2))
+            db_total = int(i.ex3) + int(float(i.ia3))
+            cn_total = int(i.ex4) + int(float(i.ia4))
+            cl_total = int(i.ex5) + int(float(i.ia5))
+            dl_total = int(i.ex6) + int(float(i.ia6))
+            nl_total = int(i.ex7) + int(float(i.ia7))
+            if i.ex1 >= '35':
+                r_ex1 = 'Pass'
+            else:
+                r_ex1 = 'Fail'
+            if i.ex2 >= '35':
+                r_ex2 = 'Pass'
+            else:
+                r_ex2 = 'Fail'
+            if i.ex3 >= '35':
+                r_ex3 = 'Pass'
+            else:
+                r_ex3 = 'Fail'
+            if i.ex4 >= '35':
+                r_ex4 = 'Pass'
+            else:
+                r_ex4 = 'Fail'
+            if i.ex5 >= '17':
+                r_ex5 = 'Pass'
+            else:
+                r_ex5 = 'Fail'
+            if i.ex6 >= '17':
+                r_ex6 = 'Pass'
+            else:
+                r_ex6 = 'Fail'
+            if i.ex7 >= '17':
+                r_ex7 = 'Pass'
+            else:
+                r_ex7 = 'Fail'
+            
+        if sem == '3':
+            context = {
+                'r_ex1':r_ex1,
+                'r_ex2':r_ex2,
+                'r_ex3':r_ex3,
+                'r_ex4':r_ex4,
+                'r_ex5':r_ex5,
+                'r_ex6':r_ex6,
+                'r_ex7':r_ex7,
+                'c_code':code[0][0],
+                'co_code':code[1][0],
+                'db_code':code[2][0],
+                'cn_code':code[3][0],
+                'cl_code':code[4][0],
+                'dl_code':code[5][0],
+                'nl_code':code[6][0],
+                'c_total':c_total,
+                'co_total':co_total,
+                'db_total':db_total,
+                'cn_total':cn_total,
+                'cl_total':cl_total,
+                'dl_total':dl_total,
+                'nl_total':nl_total,
+                'c': sub[0][0],
+                'co': sub[1][0],
+                'dbms': sub[2][0],
+                'cn': sub[3][0],
+                'cl': sub[4][0],
+                'dl': sub[5][0],
+                'nl': sub[6][0],
+                'query':q,
+            }
+            return render (request, 'results/odd_display.html', context)
+    return render(request, 'results/odd_display.html')
+
+    
+    
