@@ -1,9 +1,40 @@
 {% extends 'base.html' %} {% block title %}Student Home{% endblock %}
 {% block content %}
 <style type="text/css">
-	h3 {
-		margin-top: 20px;
+	.px-3 {
+		margin-top: 20%;
 	}
+
+	.button{
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.btn{
+    border: 1px solid #fff;
+    padding: 8px 21px;
+    color: whitesmoke;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+}
+
 </style>
-<center><h3> Welcome to Students Portal </h3></center>
+<body class="text-center text-white bg-dark" cz-shortcut-listen="true">
+	  <main class="px-3">
+		<h1>Welcome to student portal</h1>
+		<p class="lead">Your Gateway to all Your Information.</p>
+
+		<div class="button">
+			<a href="https://vpp.klsbelagavi.org/computer-science/#tabs_desc_3421_4" class="btn">Syllabus / Timetable</a>
+		</div>
+	  </main>
+
+	</body>
 {% endblock %}

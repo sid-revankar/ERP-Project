@@ -8,10 +8,10 @@
       <div class="card-body">
         <h5 class="card-title">Timetable</h5>
         <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          View your personal class timings.
         </p>
         <a href="{% url 'time_table' %}" class="btn btn-primary rounded-pill"
-          >View &raquo;</a
+          >Here &raquo;</a
         >
       </div>
     </div>
@@ -21,10 +21,10 @@
       <div class="card-body">
         <h5 class="card-title">Attendance</h5>
         <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Take attendance for your today's class.
         </p>
         <a href="{% url 'attendance' %}" class="btn btn-primary rounded-pill"
-          >Manage &raquo;</a
+          >Here &raquo;</a
         >
       </div>
     </div>
@@ -34,7 +34,7 @@
       <div class="card-body">
         <h5 class="card-title">Feedback</h5>
         <p class="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          View Feedback uploaded by students.
         </p>
         <a href="{% url 'view-feedback' %}" class="btn btn-primary rounded-pill"
           >View &raquo;</a
@@ -47,7 +47,7 @@
 <script>
   window.onload = function() {
     // similar behavior as clicking on a link
-    window.location.href = "http://localhost:8000/login/";
+    window.location.href = "/login";
 }
 </script>
 {% endif %}

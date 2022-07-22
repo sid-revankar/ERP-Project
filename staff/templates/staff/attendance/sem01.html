@@ -8,7 +8,9 @@
     <label class="input-group-text" for="subject">Choose Subject</label>
 
     <select name="subject" class="form-select" id="subject">
-      <option selected value="ENGINEERING MATHEMATICS">ENGINEERING MATHEMATICS</option>
+      <option selected value="ENGINEERING MATHEMATICS">
+        ENGINEERING MATHEMATICS
+      </option>
       <option value="FUNDAMENTALS OF COMPUTER">FUNDAMENTALS OF COMPUTER</option>
       <option value="FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB">
         FUNDAMENTALS OF ELECTRICAL & ELECTRONICS ENGINEERING LAB
@@ -51,6 +53,7 @@
       {% endfor %}
     </tbody>
   </table>
-  <input type="submit" value="Save" class="btn btn-primary rounded-pill mb-3" />
+  <input type="submit" value="Save" class="btn btn-primary rounded-pill" />
+  <input type="reset" value="Reset" class="btn btn-danger rounded-pill" />
 </form>
 {% endblock %}
