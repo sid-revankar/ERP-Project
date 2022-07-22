@@ -291,8 +291,8 @@ def searchResult(request):
                 'nl': sub[6][0],
                 'query':q,
             }
-            return render (request, 'results/odd_display.html', context)
-    return render(request, 'results/odd_display.html')
+            return render (request, 'results/search_result.html', context)
+    return render(request, 'results/search_result.html')
 
     
     
